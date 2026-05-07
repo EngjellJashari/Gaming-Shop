@@ -78,17 +78,6 @@ CREATE TABLE IF NOT EXISTS `order-details` (
     FOREIGN KEY (pid) REFERENCES products(pid)
 );
 
--- Create reviews table
-CREATE TABLE IF NOT EXISTS reviews (
-    rid INT AUTO_INCREMENT PRIMARY KEY,
-    oid INT NOT NULL,
-    pid INT NOT NULL,
-    rtext TEXT,
-    rating INT,
-    FOREIGN KEY (oid) REFERENCES orders(oid),
-    FOREIGN KEY (pid) REFERENCES products(pid)
-);
-
 -- Create wishlist table
 CREATE TABLE IF NOT EXISTS wishlist (
     aid INT NOT NULL,
