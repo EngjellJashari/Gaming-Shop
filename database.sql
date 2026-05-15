@@ -87,6 +87,18 @@ CREATE TABLE IF NOT EXISTS wishlist (
     FOREIGN KEY (pid) REFERENCES products(pid)
 );
 
+-- Create reviews table
+CREATE TABLE IF NOT EXISTS reviews (
+    rid INT AUTO_INCREMENT PRIMARY KEY,
+    pid INT NOT NULL,
+    aid INT NULL,
+    rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
+    comment TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (pid) REFERENCES products(pid) ON DELETE CASCADE,
+    FOREIGN KEY (aid) REFERENCES accounts(aid) ON DELETE SET NULL
+);
+
 -- Create contact messages table
 CREATE TABLE IF NOT EXISTS contact_messages (
     id INT AUTO_INCREMENT PRIMARY KEY,
